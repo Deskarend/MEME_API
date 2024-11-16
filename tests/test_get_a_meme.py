@@ -12,7 +12,7 @@ class TestGetMeme:
     def test_get_a_meme(self, get_a_meme_endpoint, random_mem_id, authorize_token):
         get_a_meme_endpoint.get_a_meme(random_mem_id, authorize_token)
 
-        get_a_meme_endpoint.check_response_getting_a_mem()
+        get_a_meme_endpoint.check_response_getting_a_mem(random_mem_id)
 
     @allure.tag('GETs')
     @allure.story('Get a meme')

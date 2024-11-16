@@ -47,7 +47,7 @@ class TestEditMeme:
                               'payloads_without_text',
                               'payloads_without_url',
                               'payloads_without_tags',
-                              'payloads_with_empty_tags'])
+                              'payloads_without_info'])
     def test_edit_the_meme_without_required_field(
             self, edit_meme_endpoint, authorize_token, new_meme_id, payload_for_edit_meme, payload
     ):

@@ -13,10 +13,10 @@ class GetMemEndpoint(BaseEndpoint):
             self.response_json = self.response.json()
 
     @allure.step('Check response successful getting a meme')
-    def check_response_getting_a_mem(self):
+    def check_response_getting_a_mem(self, mem_id):
         self.check_status_code_is_200()
 
-        assert self.response_json.get('id'), 'Mem has not id'
+        assert self.response_json.get('id') == mem_id, 'Mem has incorrect id'
         assert self.response_json.get('text'), 'Mem has not text'
         assert self.response_json.get('url'), 'Mem has not url'
         assert self.response_json.get('tags'), 'Mem has not url'

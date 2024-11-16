@@ -79,10 +79,11 @@ def not_meme_owner_authorize_token(authorize_endpoint, not_meme_owner_payload_fo
 
 
 @pytest.fixture
-def new_meme_id(add_a_new_meme_endpoint, payload_for_new_meme, authorize_token):
+def new_meme_id(add_a_new_meme_endpoint, payload_for_new_meme, authorize_token, delete_meme_endpoint):
     add_a_new_meme_endpoint.add_a_new_mem(payload_for_new_meme, authorize_token)
     new_meme_id = add_a_new_meme_endpoint.get_mem_id()
-    return new_meme_id
+    yield new_meme_id
+    delete_meme_endpoint.delete_the_meme(new_meme_id, authorize_token)
 
 
 @pytest.fixture

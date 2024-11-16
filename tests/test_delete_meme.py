@@ -8,10 +8,12 @@ class TestDeleteMeme:
     @allure.tag('DELETEs')
     @allure.story('Delete the meme')
     @allure.title('Check successful deleting meme')
-    def test_delete_meme(self, delete_meme_endpoint, new_meme_id, authorize_token):
+    def test_delete_meme(self, delete_meme_endpoint, new_meme_id, authorize_token, get_a_meme_endpoint):
         delete_meme_endpoint.delete_the_meme(new_meme_id, authorize_token)
-
         delete_meme_endpoint.check_response_of_successful_deleted_meme(new_meme_id)
+
+        get_a_meme_endpoint.get_a_meme(new_meme_id, authorize_token)
+        get_a_meme_endpoint.check_status_code_is_404()
 
     @allure.tag('DELETEs')
     @allure.story('Delete the meme')
